@@ -21,3 +21,8 @@ test('has method to increase hitCount', () => {
     s.hit()
     expect(s).toHaveProperty('hitCount', 1)
 })
+
+test('has method to check if the ship has sunk', () => {
+    s = new Ship(3)
+    expect(s.isSunk()).toBeFalsy()
+})
