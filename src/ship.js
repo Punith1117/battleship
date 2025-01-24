@@ -7,4 +7,8 @@ export class Ship {
     hit() {
         this.hitCount++
     }
+
+    isSunk() {
+        return (this.len - this.hitCount == 0)? true : false
+    }
 }
