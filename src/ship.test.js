@@ -15,3 +15,9 @@ test('has property that counts number of hits taken', () => {
     s = new Ship(3)
     expect(s).toHaveProperty('hitCount', 0)
 })
+
+test('has method to increase hitCount', () => {
+    s = new Ship(3)
+    s.hit()
+    expect(s).toHaveProperty('hitCount', 1)
+})
