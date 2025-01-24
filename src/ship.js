@@ -3,4 +3,8 @@ export class Ship {
         this.len = len
         this.hitCount = 0
     }
+
+    hit() {
+        this.hitCount++
+    }
 }
