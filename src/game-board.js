@@ -37,10 +37,22 @@ export class GameBoard {
         }
 
         if (ship.isPlaced == true) return false
-        
+
         if (direction == 'h') {
             if ((y + ship.len - 1) > 7) return false
         } else if ((x + ship.len - 1) > 7) return false
+        
+        if (direction == 'h') {
+            for (let i = 0; i < ship.len; i++) {
+                let cell = this.board[x][y + i]
+                if (cell.isShip == true) return false
+            }
+        } else {
+            for (let i = 0; i < ship.len; i++) {
+                let cell = this.board[x + i][y]
+                if (cell.isShip == true) return false
+            }
+        }
 
         if (direction == 'h') {
             for (let i = 0; i < ship.len; i++) {
