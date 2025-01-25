@@ -1,3 +1,4 @@
+import { SingleEntryPlugin } from "webpack";
 import { Cell } from "./cell";
 import { Ship } from "./ship";
 
@@ -35,8 +36,26 @@ export class GameBoard {
             default: return false
         }
 
+        if (ship.isPlaced == true) return false
+        
         if (direction == 'h') {
             if ((y + ship.len - 1) > 7) return false
         } else if ((x + ship.len - 1) > 7) return false
+
+        if (direction == 'h') {
+            for (let i = 0; i < ship.len; i++) {
+                let cell = this.board[x][y + i];
+                cell.isShip = true
+                cell.ship = ship
+            }
+        } else {// for placing ship in vertical direction
+            for (let i = 0; i < ship.len; i++) {
+                let cell = this.board[x + i][y];
+                cell.isShip = true
+                cell.ship = ship
+            }
+        }
+        ship.isPlaced = true
+        return true
     }
 }
