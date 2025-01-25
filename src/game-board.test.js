@@ -12,10 +12,15 @@ describe('placeShip function', () => {
     })
 
     test('should return false if the ship is already placed', () => {
+        board.placeShip(1, 3, 4, 'h')
         expect(board.placeShip(1, 3, 4, 'h')).toBeFalsy()
     })
 
     test('should return false if the ship size is too large to place in the coordinates given', () => {
         expect(board.placeShip(0, 7, 2, 'h')).toBeFalsy()
+    })
+
+    test('should return true if a ship is placed successfully', () => {
+        expect(board.placeShip(0, 5, 2, 'h')).toBeTruthy()
     })
 })
