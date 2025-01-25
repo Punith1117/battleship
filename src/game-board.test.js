@@ -10,4 +10,8 @@ describe('placeShip function', () => {
     test('should return false if ship length is invalid', () => {
         expect(board.placeShip(1, 3, 6, 'h')).toBeFalsy()
     })
+
+    test('should return false if the ship is already placed', () => {
+        expect(board.placeShip(1, 3, 4, 'h')).toBeFalsy()
+    })
 })
