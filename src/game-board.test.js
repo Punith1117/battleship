@@ -6,4 +6,8 @@ describe('placeShip function', () => {
     test('to return false if any coordinate is invalid', () => {
         expect(board.placeShip(-1, 3, 5, 'h')).toBeFalsy()
     })
+
+    test('should return false if ship length is invalid', () => {
+        expect(board.placeShip(1, 3, 6, 'h')).toBeFalsy()
+    })
 })
