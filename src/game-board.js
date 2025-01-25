@@ -13,5 +13,6 @@ export class GameBoard {
 
     placeShip(x, y, shipLen, direction) {
         if (x > 7 || y > 7 || x < 0 || y < 0) return false
+        if (shipLen < 1 || shipLen > 5) return false
     }
 }
