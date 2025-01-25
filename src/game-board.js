@@ -12,7 +12,27 @@ export class GameBoard {
     }
 
     placeShip(x, y, shipLen, direction) {
+        let ship;
+        
         if (x > 7 || y > 7 || x < 0 || y < 0) return false
-        if (shipLen < 1 || shipLen > 5) return false
+
+        switch(shipLen) {
+            case 1:
+                ship = ship1
+                break
+            case 2:
+                ship = ship2
+                break
+            case 3:
+                ship = ship3
+                break
+            case 4:
+                ship = ship4
+                break
+            case 5:
+                ship = ship5
+                break
+            default: return false
+        }
     }
 }
