@@ -34,5 +34,9 @@ export class GameBoard {
                 break
             default: return false
         }
+
+        if (direction == 'h') {
+            if ((y + ship.len - 1) > 7) return false
+        } else if ((x + ship.len - 1) > 7) return false
     }
 }
