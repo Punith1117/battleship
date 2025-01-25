@@ -22,3 +22,7 @@ test('has method to increase hitCount', () => {
 test('has method to check if the ship has sunk', () => {
     expect(s.isSunk()).toBeFalsy()
 })
+
+test('has method to check if the ship is placed', () => {
+    expect(s.isPlaced()).toBeFalsy()
+})
