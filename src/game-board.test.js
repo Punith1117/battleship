@@ -23,4 +23,8 @@ describe('placeShip function', () => {
     test('should return true if a ship is placed successfully', () => {
         expect(board.placeShip(0, 5, 2, 'h')).toBeTruthy()
     })
+
+    test('should return false if any cell in which the ship is placed is already occupied', () => {
+        expect(board.placeShip(1, 3, 3, 'h')).toBeFalsy()
+    })
 })
