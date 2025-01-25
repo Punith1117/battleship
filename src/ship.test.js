@@ -23,6 +23,6 @@ test('has method to check if the ship has sunk', () => {
     expect(s.isSunk()).toBeFalsy()
 })
 
-test('has method to check if the ship is placed', () => {
-    expect(s.isPlaced()).toBeFalsy()
+test('has field to check if the ship is placed', () => {
+    expect(s.isPlaced).toBeFalsy()
 })
