@@ -80,7 +80,7 @@ let board2 = new GameBoard()
 
 describe('placeShipsRandomly function', () => {
     test('should place each ship randomly on the board', () => {
-        board.placeShipsRandomly()
+        board2.placeShipsRandomly()
         let arr = []
         arr.push(board2.ship1.isPlaced)
         arr.push(board2.ship2.isPlaced)
