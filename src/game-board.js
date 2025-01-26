@@ -80,4 +80,14 @@ export class GameBoard {
            ship.hit()
         }
     }
+
+    isDestroyed() {
+        if (!this.ship1.isSunk()) return false 
+        if (!this.ship2.isSunk()) return false 
+        if (!this.ship3.isSunk()) return false 
+        if (!this.ship4.isSunk()) return false 
+        if (!this.ship5.isSunk()) return false 
+
+        return true
+    }
 }
