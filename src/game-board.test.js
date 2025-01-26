@@ -35,4 +35,8 @@ describe('receiveAttack function', () => {
         let cell = board.board[0][0]
         expect(cell.value).toBe(0)
     })
+
+    test('should return false if value of cell is already set to 0', () => {
+        expect(board.receiveAttack(0,0)).toBe(false)
+    })
 })
