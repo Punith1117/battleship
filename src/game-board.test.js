@@ -48,3 +48,30 @@ describe('receiveAttack function', () => {
         expect(spy).toHaveBeenCalledTimes(1)
     })
 })
+
+describe('isDestroyed function', () => {
+    test('should return true if all of the ships have sunk', () => {
+        board.placeShip(2, 0, 1, 'h')
+        board.placeShip(3, 0, 3, 'h')
+        board.placeShip(4, 0, 5, 'h')
+        board.receiveAttack(0,6)
+
+        board.receiveAttack(1,3)
+        board.receiveAttack(1,4)
+        board.receiveAttack(1,5)
+        board.receiveAttack(1,6)
+
+        board.receiveAttack(2,0)
+        
+        board.receiveAttack(3,0)
+        board.receiveAttack(3,1)
+        board.receiveAttack(3,2)
+        
+        board.receiveAttack(4,0)
+        board.receiveAttack(4,1)
+        board.receiveAttack(4,2)
+        board.receiveAttack(4,3)
+        board.receiveAttack(4,4)
+        expect(board.isDestroyed()).toBe(true)
+    })
+})
