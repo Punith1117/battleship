@@ -28,3 +28,11 @@ describe('placeShip function', () => {
         expect(board.placeShip(1, 3, 3, 'h')).toBeFalsy()
     })
 })
+
+describe('receiveAttack function', () => {
+    test('should assign the value of a cell to 0', () => {
+        board.receiveAttack(0, 0)
+        let cell = board.board[0][0]
+        expect(cell.value).toBe(0)
+    })
+})
