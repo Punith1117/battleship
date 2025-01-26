@@ -74,5 +74,10 @@ export class GameBoard {
         let cell = this.board[row][col]
         if (cell.value == 0) return false
         cell.value = 0
+        let ship
+        if (cell.isShip) {
+           ship = cell.ship 
+           ship.hit()
+        }
     }
 }
