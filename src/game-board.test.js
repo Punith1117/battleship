@@ -75,3 +75,18 @@ describe('isDestroyed function', () => {
         expect(board.isDestroyed()).toBe(true)
     })
 })
+
+board = new GameBoard()
+
+describe('placeShipsRandomly function', () => {
+    test('should place each ship randomly on the board', () => {
+        board.placeShipsRandomly()
+        let arr = []
+        arr.push(board.ship1.isPlaced)
+        arr.push(board.ship2.isPlaced)
+        arr.push(board.ship3.isPlaced)
+        arr.push(board.ship4.isPlaced)
+        arr.push(board.ship5.isPlaced)
+        expect(arr.every(Boolean)).toBe(true)
+    })
+})
