@@ -39,4 +39,12 @@ describe('receiveAttack function', () => {
     test('should return false if value of cell is already set to 0', () => {
         expect(board.receiveAttack(0,0)).toBe(false)
     })
+
+    test('should call hit function on ship if the attacked cell is a ship', () => {
+        let cell = board.board[0][5]
+        let ship = cell.ship
+        let spy = jest.spyOn(ship, 'hit')
+        board.receiveAttack(0,5)
+        expect(spy).toHaveBeenCalledTimes(1)
+    })
 })
