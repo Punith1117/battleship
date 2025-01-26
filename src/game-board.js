@@ -1,4 +1,3 @@
-import { SingleEntryPlugin } from "webpack";
 import { Cell } from "./cell";
 import { Ship } from "./ship";
 
@@ -69,5 +68,10 @@ export class GameBoard {
         }
         ship.isPlaced = true
         return true
+    }
+
+    receiveAttack(row, col) {
+        let cell = this.board[row][col]
+        cell.value = 0
     }
 }
