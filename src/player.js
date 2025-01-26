@@ -3,6 +3,7 @@ import { GameBoard } from "./game-board";
 export class Player {
     constructor() {
         this.board = new GameBoard()
+        this.hasWon = false
     }
 
     placeShipsRandomly() {
@@ -10,7 +11,8 @@ export class Player {
     }
 
     attack(row, col, opponent) {
-        return opponent.receiveAttack(row, col)
+        opponent.receiveAttack(row, col)
+        if (opponent.board.isDestroyed()) this.hasWon = true
     }
 
     receiveAttack(row, col) {
