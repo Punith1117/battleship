@@ -1,3 +1,4 @@
+import { getRandomPosition } from ".";
 import { Cell } from "./cell";
 import { Ship } from "./ship";
 
@@ -89,5 +90,17 @@ export class GameBoard {
         if (!this.ship5.isSunk()) return false 
 
         return true
+    }
+
+    placeShipsRandomly() {
+        if (this.ship1.isPlaced) return false
+        let shipPlaced
+        for (i = 0; i < 5; i++, shipPlaced = false) {
+            while(shipPlaced == false) {
+                let arr = getRandomPosition()
+                if (this.placeShip(arr[0], arr[1], i, 'h')) 
+                    shipPlaced = true
+            }
+        }
     }
 }
