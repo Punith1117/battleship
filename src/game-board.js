@@ -72,6 +72,7 @@ export class GameBoard {
 
     receiveAttack(row, col) {
         let cell = this.board[row][col]
+        if (cell.value == 0) return false
         cell.value = 0
     }
 }
