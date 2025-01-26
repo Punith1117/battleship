@@ -94,8 +94,8 @@ export class GameBoard {
 
     placeShipsRandomly() {
         if (this.ship1.isPlaced) return false
-        let shipPlaced
-        for (let i = 0; i < 5; i++, shipPlaced = false) {
+        let shipPlaced = false
+        for (let i = 1; i < 6; i++, shipPlaced = false) {
             while(shipPlaced == false) {
                 let arr = getRandomPosition()
                 if (this.placeShip(arr[0], arr[1], i, 'h')) 
