@@ -15,10 +15,14 @@ describe('attack function', () => {
     })
 
     test('sets hasWon to be true if all ships of opponent are destroyed', () => {
-        while(player.hasWon == true) {
-            let position = getRandomPosition()
-            player.attack(position[0], position[1], opponent)
-        }
+        for (let i = 0; i < 8; i++)
+            for (let j = 0; j < 8; j++) {
+                player.attack(i, j, opponent)
+                if (player.hasWon == true) {
+                    i = 8
+                    j = 8
+                }
+            }
         let opBoard = opponent.board
         expect(opBoard.isDestroyed()).toBe(true)
     })
