@@ -80,6 +80,7 @@ export class GameBoard {
            ship = cell.ship 
            ship.hit()
         }
+        return true// indicates the attack is received successfully
     }
 
     isDestroyed() {
