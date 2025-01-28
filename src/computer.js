@@ -12,6 +12,7 @@ export class Computer extends Player{
         while(true) {
             positionArr = getRandomPosition()
             if (opponent.receiveAttack(positionArr[0], positionArr[1])) {
+                if (opponent.board.isDestroyed()) this.hasWon = true
                 return true
             }
         }
