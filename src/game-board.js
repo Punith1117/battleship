@@ -81,7 +81,6 @@ export class GameBoard {
         for (let i = 1; i < 6; i++, shipPlaced = false) {
             while(shipPlaced == false) {
                 let arr = getRandomPosition()
-                console.log(arr)
                 if (this.canPlaceShip(arr[0], arr[1], i, 'h')) {
                     this.placeShip(arr[0], arr[1], i, 'h')
                     shipPlaced = true
