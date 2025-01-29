@@ -23,6 +23,11 @@ describe('canPlaceShip function', () => {
     test('should return false if any cell in which the ship is placed is already occupied', () => {
         expect(board.canPlaceShip(1, 3, 3, 'h')).toBeFalsy()
     })
+
+    test('should return false if a ship cannot be placed right next to another ship', () => {
+        board.placeShip(0, 0, 1, 'h')
+        expect(board.canPlaceShip(1, 0, 2, 'h')).toBe(false)
+    })
 })
 
 describe('placeShip function', () => {
