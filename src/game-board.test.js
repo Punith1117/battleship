@@ -12,8 +12,8 @@ describe('canPlaceShip function', () => {
     })
     
     test('should return false if the ship is already placed', () => {
-        board.placeShip(1, 3, 4, 'h')
-        expect(board.canPlaceShip(1, 3, 4, 'h')).toBeFalsy()
+        console.log(board.placeShip(1, 2, 2, 'h'))
+        expect(board.canPlaceShip(1, 2, 2, 'h')).toBeFalsy()
     })
     
     test('should return false if the ship size is too large to place in the coordinates given', () => {
@@ -21,18 +21,18 @@ describe('canPlaceShip function', () => {
     })
 
     test('should return false if any cell in which the ship is placed is already occupied', () => {
-        expect(board.canPlaceShip(1, 3, 3, 'h')).toBeFalsy()
+        expect(board.canPlaceShip(1, 2, 3, 'h')).toBeFalsy()
     })
 
     test('should return false if a ship cannot be placed right next to another ship', () => {
         board.placeShip(0, 0, 1, 'h')
-        expect(board.canPlaceShip(1, 0, 2, 'h')).toBe(false)
+        expect(board.canPlaceShip(1, 0, 3, 'h')).toBe(false)
     })
 })
 
 describe('placeShip function', () => {
     test('should return true if a ship is placed successfully', () => {
-        expect(board.placeShip(0, 5, 2, 'h')).toBeTruthy()
+        expect(board.placeShip(3, 5, 3, 'h')).toBeTruthy()
     })
 })
 
@@ -48,37 +48,37 @@ describe('receiveAttack function', () => {
     })
 
     test('should call hit function on ship if the attacked cell is a ship', () => {
-        let cell = board.board[0][5]
+        let cell = board.board[1][2]
         let ship = cell.ship
         let spy = jest.spyOn(ship, 'hit')
-        board.receiveAttack(0,5)
+        board.receiveAttack(1,2)
         expect(spy).toHaveBeenCalledTimes(1)
     })
 })
 
 describe('isDestroyed function', () => {
     test('should return true if all of the ships have sunk', () => {
-        board.placeShip(2, 0, 1, 'h')
-        board.placeShip(3, 0, 3, 'h')
-        board.placeShip(4, 0, 5, 'h')
-        board.receiveAttack(0,6)
+        board.placeShip(4, 0, 4, 'h')
+        board.placeShip(6, 0, 5, 'h')
+        board.receiveAttack(0,0)
 
+        board.receiveAttack(1,2)
         board.receiveAttack(1,3)
-        board.receiveAttack(1,4)
-        board.receiveAttack(1,5)
-        board.receiveAttack(1,6)
 
-        board.receiveAttack(2,0)
-        
-        board.receiveAttack(3,0)
-        board.receiveAttack(3,1)
-        board.receiveAttack(3,2)
+        board.receiveAttack(3,5)
+        board.receiveAttack(3,6)
+        board.receiveAttack(3,7)
         
         board.receiveAttack(4,0)
         board.receiveAttack(4,1)
         board.receiveAttack(4,2)
         board.receiveAttack(4,3)
-        board.receiveAttack(4,4)
+
+        board.receiveAttack(6,0)
+        board.receiveAttack(6,1)
+        board.receiveAttack(6,2)
+        board.receiveAttack(6,3)
+        board.receiveAttack(6,4)
         expect(board.isDestroyed()).toBe(true)
     })
 })
@@ -87,7 +87,9 @@ let board2 = new GameBoard()
 
 describe('placeShipsRandomly function', () => {
     test('should place each ship randomly on the board', () => {
+        console.log('placing ships randomly')
         board2.placeShipsRandomly()
+        console.log('placed successfully')
         let arr = []
         arr.push(board2.ship1.isPlaced)
         arr.push(board2.ship2.isPlaced)
