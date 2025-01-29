@@ -14,7 +14,7 @@ export class GameBoard {
 
     placeShip(x, y, shipLen, direction) {
         let ship;
-        
+
         if (!this.canPlaceShip(x, y, shipLen, direction)) return false
 
         switch(shipLen) {
@@ -81,10 +81,14 @@ export class GameBoard {
         for (let i = 1; i < 6; i++, shipPlaced = false) {
             while(shipPlaced == false) {
                 let arr = getRandomPosition()
-                if (this.placeShip(arr[0], arr[1], i, 'h')) 
+                console.log(arr)
+                if (this.canPlaceShip(arr[0], arr[1], i, 'h')) {
+                    this.placeShip(arr[0], arr[1], i, 'h')
                     shipPlaced = true
+                }
             }
         }
+        return true
     }
 
     canPlaceShip(x, y, shipLen, direction) {
@@ -115,15 +119,28 @@ export class GameBoard {
             if ((y + ship.len - 1) > 7) return false
         } else if ((x + ship.len - 1) > 7) return false
         
+        let rowOffset = x - 1
+        let colOffset = y - 1
+
         if (direction == 'h') {
-            for (let i = 0; i < ship.len; i++) {
-                let cell = this.board[x][y + i]
-                if (cell.isShip == true) return false
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j <= ship.len; j++) {
+                    if (((rowOffset + i) < 0) || ((colOffset + j) < 0) || ((rowOffset + i) > 7) || ((colOffset + j) > 7)) {
+                        continue
+                    }
+                    let cell = this.board[rowOffset + i][colOffset + j]
+                    if (cell.isShip == true) return false
+                }
             }
         } else {
-            for (let i = 0; i < ship.len; i++) {
-                let cell = this.board[x + i][y]
-                if (cell.isShip == true) return false
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j <= ship.len; j++) {
+                    if (((rowOffset + i) < 0) || ((colOffset + j) < 0) || ((rowOffset + i) > 7) || ((colOffset + j) > 7)) {
+                        continue
+                    }             
+                    let cell = this.board[rowOffset + j][colOffset + i]
+                    if (cell.isShip == true) return false
+                }
             }
         }
 
