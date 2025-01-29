@@ -14,8 +14,8 @@ export class GameBoard {
 
     placeShip(x, y, shipLen, direction) {
         let ship;
-
-        if (x > 7 || y > 7 || x < 0 || y < 0) return false
+        
+        if (!this.canPlaceShip(x, y, shipLen, direction)) return false
 
         switch(shipLen) {
             case 1:
@@ -34,24 +34,6 @@ export class GameBoard {
                 ship = this.ship5
                 break
             default: return false
-        }
-
-        if (ship.isPlaced == true) return false
-
-        if (direction == 'h') {
-            if ((y + ship.len - 1) > 7) return false
-        } else if ((x + ship.len - 1) > 7) return false
-        
-        if (direction == 'h') {
-            for (let i = 0; i < ship.len; i++) {
-                let cell = this.board[x][y + i]
-                if (cell.isShip == true) return false
-            }
-        } else {
-            for (let i = 0; i < ship.len; i++) {
-                let cell = this.board[x + i][y]
-                if (cell.isShip == true) return false
-            }
         }
 
         if (direction == 'h') {
@@ -103,5 +85,48 @@ export class GameBoard {
                     shipPlaced = true
             }
         }
+    }
+
+    canPlaceShip(x, y, shipLen, direction) {
+        if (x > 7 || y > 7 || x < 0 || y < 0) return false
+        let ship
+        switch(shipLen) {
+            case 1:
+                ship = this.ship1
+                break
+            case 2:
+                ship = this.ship2
+                break
+            case 3:
+                ship = this.ship3
+                break
+            case 4:
+                ship = this.ship4
+                break
+            case 5:
+                ship = this.ship5
+                break
+            default: return false
+        }
+
+        if (ship.isPlaced == true) return false
+
+        if (direction == 'h') {
+            if ((y + ship.len - 1) > 7) return false
+        } else if ((x + ship.len - 1) > 7) return false
+        
+        if (direction == 'h') {
+            for (let i = 0; i < ship.len; i++) {
+                let cell = this.board[x][y + i]
+                if (cell.isShip == true) return false
+            }
+        } else {
+            for (let i = 0; i < ship.len; i++) {
+                let cell = this.board[x + i][y]
+                if (cell.isShip == true) return false
+            }
+        }
+
+        return true
     }
 }
