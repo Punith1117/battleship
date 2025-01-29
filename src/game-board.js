@@ -124,7 +124,7 @@ export class GameBoard {
 
         if (direction == 'h') {
             for (let i = 0; i < 3; i++) {
-                for (let j = 0; j <= ship.len; j++) {
+                for (let j = 0; j <= ship.len + 1; j++) {
                     if (((rowOffset + i) < 0) || ((colOffset + j) < 0) || ((rowOffset + i) > 7) || ((colOffset + j) > 7)) {
                         continue
                     }
@@ -134,7 +134,7 @@ export class GameBoard {
             }
         } else {
             for (let i = 0; i < 3; i++) {
-                for (let j = 0; j <= ship.len; j++) {
+                for (let j = 0; j <= ship.len + 1; j++) {
                     if (((rowOffset + j) < 0) || ((colOffset + i) < 0) || ((rowOffset + j) > 7) || ((colOffset + i) > 7)) {
                         continue
                     }             
