@@ -81,8 +81,9 @@ export class GameBoard {
         for (let i = 1; i < 6; i++, shipPlaced = false) {
             while(shipPlaced == false) {
                 let arr = getRandomPosition()
-                if (this.canPlaceShip(arr[0], arr[1], i, 'h')) {
-                    this.placeShip(arr[0], arr[1], i, 'h')
+                let randomDirection = this.getRandomDirection()
+                if (this.canPlaceShip(arr[0], arr[1], i, randomDirection)) {
+                    this.placeShip(arr[0], arr[1], i, randomDirection)
                     shipPlaced = true
                 }
             }
@@ -134,7 +135,7 @@ export class GameBoard {
         } else {
             for (let i = 0; i < 3; i++) {
                 for (let j = 0; j <= ship.len; j++) {
-                    if (((rowOffset + i) < 0) || ((colOffset + j) < 0) || ((rowOffset + i) > 7) || ((colOffset + j) > 7)) {
+                    if (((rowOffset + j) < 0) || ((colOffset + i) < 0) || ((rowOffset + j) > 7) || ((colOffset + i) > 7)) {
                         continue
                     }             
                     let cell = this.board[rowOffset + j][colOffset + i]
@@ -144,5 +145,11 @@ export class GameBoard {
         }
 
         return true
+    }
+
+    getRandomDirection() {
+        let direction = ['h', 'v']
+        let i = Math.round(Math.random())
+        return direction[i]
     }
 }
