@@ -25,4 +25,8 @@ export class Queue {
         this.head = node.next // make the head point to the next node
         return value
     }
+
+    isEmpty() {
+        if (this.head == null) return true
+    }
 }
