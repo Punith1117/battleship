@@ -12,7 +12,7 @@ describe('canPlaceShip function', () => {
     })
     
     test('should return false if the ship is already placed', () => {
-        console.log(board.placeShip(0, 2, 2, 'h'))
+        board.placeShip(0, 2, 2, 'h')
         expect(board.canPlaceShip(0, 2, 2, 'h')).toBeFalsy()
     })
     
@@ -74,9 +74,7 @@ let board2 = new GameBoard()
 
 describe('placeShipsRandomly function', () => {
     test('should place each ship randomly on the board', () => {
-        console.log('placing ships randomly')
         board2.placeShipsRandomly()
-        console.log('placed successfully')
         let arr = []
         let shipsArr = board2.ships
         for (let ship of shipsArr) {
