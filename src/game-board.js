@@ -5,11 +5,12 @@ import { Ship } from "./ship";
 export class GameBoard {
     constructor() {
         this.boardArr = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => new Cell()));
-        this.ship5 = new Ship(5)
-        this.ship4 = new Ship(4)
-        this.ship3 = new Ship(3)
-        this.ship2 = new Ship(2)
-        this.ship1 = new Ship(1)
+        this.ships = [] //stores all the ships to be placed
+        this.ships.push(new Ship(1))
+        this.ships.push(new Ship(2))
+        this.ships.push(new Ship(3))
+        this.ships.push(new Ship(4))
+        this.ships.push(new Ship(5))
     }
 
     placeShip(x, y, shipLen, direction) {
@@ -17,24 +18,13 @@ export class GameBoard {
 
         if (!this.canPlaceShip(x, y, shipLen, direction)) return false
 
-        switch(shipLen) {
-            case 1:
-                ship = this.ship1
-                break
-            case 2:
-                ship = this.ship2
-                break
-            case 3:
-                ship = this.ship3
-                break
-            case 4:
-                ship = this.ship4
-                break
-            case 5:
-                ship = this.ship5
-                break
-            default: return false
+        for (let shipIterator of this.ships) {
+            if (shipLen == shipIterator.len) {
+                ship = shipIterator
+            }
         }
+
+        if (ship == undefined) return false
 
         if (direction == 'h') {
             for (let i = 0; i < ship.len; i++) {
@@ -66,17 +56,14 @@ export class GameBoard {
     }
 
     isDestroyed() {
-        if (!this.ship1.isSunk()) return false 
-        if (!this.ship2.isSunk()) return false 
-        if (!this.ship3.isSunk()) return false 
-        if (!this.ship4.isSunk()) return false 
-        if (!this.ship5.isSunk()) return false 
-
+        for (let ship of this.ships) {
+            if (!ship.isSunk()) return false
+        }
         return true
     }
 
     placeShipsRandomly() {
-        if (this.ship1.isPlaced) return false
+        if (this.ships[0].isPlaced) return false
         let shipPlaced = false
         for (let i = 1; i < 6; i++, shipPlaced = false) {
             while(shipPlaced == false) {
@@ -94,24 +81,13 @@ export class GameBoard {
     canPlaceShip(x, y, shipLen, direction) {
         if (x > 7 || y > 7 || x < 0 || y < 0) return false
         let ship
-        switch(shipLen) {
-            case 1:
-                ship = this.ship1
-                break
-            case 2:
-                ship = this.ship2
-                break
-            case 3:
-                ship = this.ship3
-                break
-            case 4:
-                ship = this.ship4
-                break
-            case 5:
-                ship = this.ship5
-                break
-            default: return false
+        for (let shipIterator of this.ships) {
+            if (shipLen == shipIterator.len) {
+                ship = shipIterator
+            }
         }
+
+        if (ship == undefined) return false
 
         if (ship.isPlaced == true) return false
 

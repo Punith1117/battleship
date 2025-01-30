@@ -91,11 +91,10 @@ describe('placeShipsRandomly function', () => {
         board2.placeShipsRandomly()
         console.log('placed successfully')
         let arr = []
-        arr.push(board2.ship1.isPlaced)
-        arr.push(board2.ship2.isPlaced)
-        arr.push(board2.ship3.isPlaced)
-        arr.push(board2.ship4.isPlaced)
-        arr.push(board2.ship5.isPlaced)
+        let shipsArr = board2.ships
+        for (let ship of shipsArr) {
+            arr.push(ship.isPlaced)
+        }
         expect(arr.every(Boolean)).toBe(true)
     })
 })
