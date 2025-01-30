@@ -42,6 +42,8 @@ export class GameBoard {
             }
         }
         ship.isPlaced = true
+        ship.setStartPosition([x, y])
+        ship.setDirection(direction)
         return true
     }
 
@@ -53,6 +55,31 @@ export class GameBoard {
         if (cell.isShip) {
            ship = cell.ship 
            ship.hit()
+           if (ship.isSunk()) {// set all the surrounding cells of the ship as 0 as the ship has sunk
+                let shipPosition = ship.getStartPosition()
+                let shipDirection = ship.getDirection()
+                let startRow = shipPosition[0] - 1
+                let startCol = shipPosition[1] - 1
+                if (shipDirection == 'h') {
+                    for (let i = 0; i < 3; i++) {
+                        for (let j = 0; j <= ship.len + 1; j++) {
+                            if (!((startRow + i) > 7) && !((startCol + j)> 7) && !((startRow + i) < 0) && !((startCol + j) < 0)) {
+                                let cell = this.boardArr[startRow + i][startCol + j]
+                                cell.value = 0
+                            }
+                        }
+                    }
+                } else {
+                    for (let i = 0; i < 3; i++) {
+                        for (let j = 0; j <= ship.len + 1; j++) {
+                            if (!((startRow + j) > 7) && !((startCol + i)> 7) && !((startRow + j) < 0) && !((startCol + i) < 0)) {
+                                let cell = this.boardArr[startRow + j][startCol + i]
+                                cell.value = 0
+                            }
+                        }
+                    }
+                }
+           }
         }
         return true// indicates the attack is received successfully
     }
