@@ -10,6 +10,7 @@ export class GameBoard {
         this.ships.push(new Ship(1))
         this.ships.push(new Ship(2))
         this.ships.push(new Ship(2))
+        this.ships.push(new Ship(2))
         this.ships.push(new Ship(3))
         this.ships.push(new Ship(3))
     }
@@ -66,7 +67,7 @@ export class GameBoard {
     placeShipsRandomly() {
         if (this.ships[0].isPlaced) return false
         let shipPlaced = false
-        let shipLenArr = [1, 1, 2, 2, 3, 3]
+        let shipLenArr = [1, 1, 2, 2, 2, 3, 3]
         for (let shipLen of shipLenArr) {
             shipPlaced = false
             while(shipPlaced == false) {
