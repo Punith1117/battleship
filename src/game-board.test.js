@@ -39,7 +39,7 @@ describe('placeShip function', () => {
 describe('receiveAttack function', () => {
     test('should assign the value of a cell to 0', () => {
         board.receiveAttack(0, 0)
-        let cell = board.board[0][0]
+        let cell = board.boardArr[0][0]
         expect(cell.value).toBe(0)
     })
 
@@ -48,7 +48,7 @@ describe('receiveAttack function', () => {
     })
 
     test('should call hit function on ship if the attacked cell is a ship', () => {
-        let cell = board.board[1][2]
+        let cell = board.boardArr[1][2]
         let ship = cell.ship
         let spy = jest.spyOn(ship, 'hit')
         board.receiveAttack(1,2)

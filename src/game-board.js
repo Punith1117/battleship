@@ -4,7 +4,7 @@ import { Ship } from "./ship";
 
 export class GameBoard {
     constructor() {
-        this.board = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => new Cell()));
+        this.boardArr = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => new Cell()));
         this.ship5 = new Ship(5)
         this.ship4 = new Ship(4)
         this.ship3 = new Ship(3)
@@ -38,13 +38,13 @@ export class GameBoard {
 
         if (direction == 'h') {
             for (let i = 0; i < ship.len; i++) {
-                let cell = this.board[x][y + i];
+                let cell = this.boardArr[x][y + i];
                 cell.isShip = true
                 cell.ship = ship
             }
         } else {// for placing ship in vertical direction
             for (let i = 0; i < ship.len; i++) {
-                let cell = this.board[x + i][y];
+                let cell = this.boardArr[x + i][y];
                 cell.isShip = true
                 cell.ship = ship
             }
@@ -54,7 +54,7 @@ export class GameBoard {
     }
 
     receiveAttack(row, col) {
-        let cell = this.board[row][col]
+        let cell = this.boardArr[row][col]
         if (cell.value == 0) return false
         cell.value = 0
         let ship
@@ -128,7 +128,7 @@ export class GameBoard {
                     if (((rowOffset + i) < 0) || ((colOffset + j) < 0) || ((rowOffset + i) > 7) || ((colOffset + j) > 7)) {
                         continue
                     }
-                    let cell = this.board[rowOffset + i][colOffset + j]
+                    let cell = this.boardArr[rowOffset + i][colOffset + j]
                     if (cell.isShip == true) return false
                 }
             }
@@ -138,7 +138,7 @@ export class GameBoard {
                     if (((rowOffset + j) < 0) || ((colOffset + i) < 0) || ((rowOffset + j) > 7) || ((colOffset + i) > 7)) {
                         continue
                     }             
-                    let cell = this.board[rowOffset + j][colOffset + i]
+                    let cell = this.boardArr[rowOffset + j][colOffset + i]
                     if (cell.isShip == true) return false
                 }
             }
