@@ -27,3 +27,11 @@ describe('attack function', () => {
         expect(opBoard.isDestroyed()).toBe(true)
     })
 })
+
+let player2 = new Player()
+let player2Board = player2.board
+test('should return true if attack is successful', () => {
+    player2Board.placeShip(0, 0, 1, 'h')
+    player2.receiveAttack(0, 0)
+    expect(player2.isHit(0, 0)).toBe(true)
+})
