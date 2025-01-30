@@ -158,4 +158,11 @@ export class GameBoard {
         let i = Math.round(Math.random())
         return direction[i]
     }
+
+    isHit(row, col) {
+        if (row > 7 || col > 7 || row < 0 || col < 0) return false
+        let cell = this.boardArr[row][col]
+        if (0 == cell.value) return true
+        return false
+    }
 }

@@ -18,4 +18,9 @@ export class Player {
     receiveAttack(row, col) {
         return this.board.receiveAttack(row, col)
     }
+
+    isHit(row, col) {
+        if (this.board.isHit(row, col)) return true
+        return false
+    }
 }
