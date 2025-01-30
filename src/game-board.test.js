@@ -12,8 +12,8 @@ describe('canPlaceShip function', () => {
     })
     
     test('should return false if the ship is already placed', () => {
-        console.log(board.placeShip(1, 2, 2, 'h'))
-        expect(board.canPlaceShip(1, 2, 2, 'h')).toBeFalsy()
+        console.log(board.placeShip(0, 2, 2, 'h'))
+        expect(board.canPlaceShip(0, 2, 2, 'h')).toBeFalsy()
     })
     
     test('should return false if the ship size is too large to place in the coordinates given', () => {
@@ -32,7 +32,7 @@ describe('canPlaceShip function', () => {
 
 describe('placeShip function', () => {
     test('should return true if a ship is placed successfully', () => {
-        expect(board.placeShip(3, 5, 3, 'h')).toBeTruthy()
+        expect(board.placeShip(4, 5, 3, 'h')).toBeTruthy()
     })
 })
 
@@ -48,37 +48,24 @@ describe('receiveAttack function', () => {
     })
 
     test('should call hit function on ship if the attacked cell is a ship', () => {
-        let cell = board.boardArr[1][2]
+        let cell = board.boardArr[0][2]
         let ship = cell.ship
         let spy = jest.spyOn(ship, 'hit')
-        board.receiveAttack(1,2)
+        board.receiveAttack(0,2)
         expect(spy).toHaveBeenCalledTimes(1)
     })
 })
 
 describe('isDestroyed function', () => {
     test('should return true if all of the ships have sunk', () => {
-        board.placeShip(4, 0, 4, 'h')
-        board.placeShip(6, 0, 5, 'h')
-        board.receiveAttack(0,0)
-
-        board.receiveAttack(1,2)
-        board.receiveAttack(1,3)
-
-        board.receiveAttack(3,5)
-        board.receiveAttack(3,6)
-        board.receiveAttack(3,7)
-        
-        board.receiveAttack(4,0)
-        board.receiveAttack(4,1)
-        board.receiveAttack(4,2)
-        board.receiveAttack(4,3)
-
-        board.receiveAttack(6,0)
-        board.receiveAttack(6,1)
-        board.receiveAttack(6,2)
-        board.receiveAttack(6,3)
-        board.receiveAttack(6,4)
+        board.placeShip(0, 7, 1, 'h')
+        board.placeShip(2, 0, 2, 'h')
+        board.placeShip(4, 0, 3, 'h')
+        for (let i = 0; i < 8; i++) {
+            for (let j = 0; j < 8; j++) {
+                board.receiveAttack(i, j)
+            }
+        }
         expect(board.isDestroyed()).toBe(true)
     })
 })

@@ -7,10 +7,11 @@ export class GameBoard {
         this.boardArr = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => new Cell()));
         this.ships = [] //stores all the ships to be placed
         this.ships.push(new Ship(1))
+        this.ships.push(new Ship(1))
+        this.ships.push(new Ship(2))
         this.ships.push(new Ship(2))
         this.ships.push(new Ship(3))
-        this.ships.push(new Ship(4))
-        this.ships.push(new Ship(5))
+        this.ships.push(new Ship(3))
     }
 
     placeShip(x, y, shipLen, direction) {
@@ -19,7 +20,7 @@ export class GameBoard {
         if (!this.canPlaceShip(x, y, shipLen, direction)) return false
 
         for (let shipIterator of this.ships) {
-            if (shipLen == shipIterator.len) {
+            if (shipLen == shipIterator.len && shipIterator.isPlaced != true) {
                 ship = shipIterator
             }
         }
@@ -65,12 +66,14 @@ export class GameBoard {
     placeShipsRandomly() {
         if (this.ships[0].isPlaced) return false
         let shipPlaced = false
-        for (let i = 1; i < 6; i++, shipPlaced = false) {
+        let shipLenArr = [1, 1, 2, 2, 3, 3]
+        for (let shipLen of shipLenArr) {
+            shipPlaced = false
             while(shipPlaced == false) {
                 let arr = getRandomPosition()
                 let randomDirection = this.getRandomDirection()
-                if (this.canPlaceShip(arr[0], arr[1], i, randomDirection)) {
-                    this.placeShip(arr[0], arr[1], i, randomDirection)
+                if (this.canPlaceShip(arr[0], arr[1], shipLen, randomDirection)) {
+                    this.placeShip(arr[0], arr[1], shipLen, randomDirection)
                     shipPlaced = true
                 }
             }
@@ -82,14 +85,13 @@ export class GameBoard {
         if (x > 7 || y > 7 || x < 0 || y < 0) return false
         let ship
         for (let shipIterator of this.ships) {
-            if (shipLen == shipIterator.len) {
+            if (shipLen == shipIterator.len && shipIterator.isPlaced != true) {
                 ship = shipIterator
+                break
             }
         }
 
         if (ship == undefined) return false
-
-        if (ship.isPlaced == true) return false
 
         if (direction == 'h') {
             if ((y + ship.len - 1) > 7) return false
