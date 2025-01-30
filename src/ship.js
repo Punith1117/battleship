@@ -15,7 +15,7 @@ export class Ship {
         return (this.len - this.hitCount == 0)? true : false
     }
 
-    getStarPosition() {
+    getStartPosition() {
         return this.startPosition
     }
 
