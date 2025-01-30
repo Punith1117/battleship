@@ -4,6 +4,7 @@ export class Ship {
         this.hitCount = 0
         this.isPlaced = false
         this.startPosition
+        this.direction
     }
 
     hit() {
@@ -20,5 +21,13 @@ export class Ship {
 
     setStartPosition(arr) {
         this.startPosition = arr
+    }
+
+    getDirection() {
+        return this.direction
+    }
+
+    setDirection(dir) {
+        this.direction = dir
     }
 }
