@@ -22,6 +22,10 @@ let opponent = new Computer()
 displayHumanBoard(player)
 displayOpponentBoard(opponent)
 let playerTurn = 'player'
+let dispPlayerTurn = document.querySelector('.opponent-content > .turn')
+dispPlayerTurn.textContent = 'Attack'
+let dispOpponentTurn = document.querySelector('.player-content > .turn')
+dispOpponentTurn.textContent = ''
 
 export async function handlePlayerClick(row, col) {
     if (playerTurn != 'player') return
@@ -32,6 +36,8 @@ export async function handlePlayerClick(row, col) {
         endGame('player')
         return
     }
+    dispOpponentTurn.textContent = 'Attack'
+    dispPlayerTurn.textContent = ''
     playerTurn = 'computer'
     await delay(1000)
     opponent.attack(player)
@@ -41,6 +47,8 @@ export async function handlePlayerClick(row, col) {
         endGame('computer')
         return
     }
+    dispOpponentTurn.textContent = ''
+    dispPlayerTurn.textContent = 'Attack'
 }
 
 function endGame(winner) {
