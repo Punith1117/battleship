@@ -1,0 +1,30 @@
+header {
+    background-color: rgb(206, 58, 58);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@font-face {
+    font-family: game-title-font;
+    src: url(./fonts/HanaleiFill-Regular.ttf);
+}
+
+.game-title {
+    font-size: max(5vw, 3rem);
+    color: white;
+    text-shadow: 5px 5px 5px black;
+    font-family: game-title-font;
+    letter-spacing: 5px;
+}
+
+.author {
+    color: white;
+    a {
+        color: white;
+        letter-spacing: 2px;
+        text-underline-offset: 3px;
+        text-shadow: 5px 5px 5px black;
+    }
+}
+
