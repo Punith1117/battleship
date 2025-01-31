@@ -47,19 +47,21 @@ header {
 .player-board, .opponent-board {
     height: max(23rem, 20vw);
     width: max(23rem, 20vw);
-    border: 2px solid black;
+    border: 0px solid black;
     display: grid;
+    gap: 3px;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
 }
 
 .cell {
-    border: 2px solid black;
-    background-color: grey;
+    border: 0px solid black;
+    border-radius: 5px;
+    background-color: rgb(173, 229, 255);
 }
 
 .ship {
-    background-color: blue;
+    background-color: rgb(63, 63, 63);
 }
 
 .hit {
@@ -67,7 +69,7 @@ header {
 }
 
 .miss {
-    background-color: red;
+    background-color: rgb(255, 83, 83);
 }
 
 .player-title, .opponent-title {
