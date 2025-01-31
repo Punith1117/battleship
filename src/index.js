@@ -21,8 +21,10 @@ let opponent = new Computer()
 
 displayHumanBoard(player)
 displayOpponentBoard(opponent)
+let playerTurn = 'player'
 
-export function handlePlayerClick(row, col) {
+export async function handlePlayerClick(row, col) {
+    if (playerTurn != 'player') return
     console.log('clicked on ' + row + ' ' + col)
     player.attack(row, col, opponent)
     displayOpponentBoard(opponent)
@@ -30,8 +32,11 @@ export function handlePlayerClick(row, col) {
         endGame('player')
         return
     }
+    playerTurn = 'computer'
+    await delay(1000)
     opponent.attack(player)
     displayHumanBoard(player)
+    playerTurn = 'player'
     if (opponent.hasWon) {
         endGame('computer')
         return
@@ -63,6 +68,9 @@ function removeEventListeners() {
     }
 }
 
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
 /*
 let body = document.querySelector('body')
     let board = document.createElement('div')
