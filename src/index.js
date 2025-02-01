@@ -32,7 +32,7 @@ export async function handlePlayerClick(row, col) {
     player.attack(row, col, opponent)
     displayOpponentBoard(opponent)
     if (player.hasWon) {
-        endGame('player')
+        endGame('human')
         return
     }
     dispOpponentTurn.textContent = 'Attack'
@@ -51,9 +51,32 @@ export async function handlePlayerClick(row, col) {
 }
 
 function endGame(winner) {
-    console.log(winner + ' has won')
     removeEventListeners()
+    let dialog = document.querySelector('dialog')
+    let winnerTitle = dialog.querySelector('.winner-announcement')
+    if (winner == 'human') {
+        winnerTitle.textContent = 'Hurrah! You have won'
+        winnerTitle.classList.add('human-won')
+        let title = document.querySelector('.player-title')
+        title.classList.add('won')
+    } else {
+        winnerTitle.textContent = 'You lost to a computer :('
+        winnerTitle.classList.add('computer-won')
+        let title = document.querySelector('.opponent-title')
+        title.classList.add('won')
+    } 
+    let playAgainButton = dialog.querySelector('button')
+    playAgainButton.addEventListener('click', () => {
+        location.reload()
+    })
+    dialog.showModal()
 }
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        event.preventDefault();
+    }
+});
 
 function removeEventListeners() {
     let opponentDiv = document.querySelector('.opponent-content')
