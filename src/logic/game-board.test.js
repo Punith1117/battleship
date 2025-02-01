@@ -60,7 +60,6 @@ describe('isDestroyed function', () => {
     test('should return true if all of the ships have sunk', () => {
         board.placeShip(0, 7, 1, 'h')
         board.placeShip(2, 0, 2, 'h')
-        board.placeShip(7, 6, 2, 'h')
         board.placeShip(4, 0, 3, 'h')
         for (let i = 0; i < 8; i++) {
             for (let j = 0; j < 8; j++) {
