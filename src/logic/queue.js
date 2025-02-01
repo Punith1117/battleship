@@ -1,32 +1,32 @@
-import { Node } from "./node"
+import { Node } from "./node";
 
 export class Queue {
-    constructor() {
-        this.head = null
-    }
+  constructor() {
+    this.head = null;
+  }
 
-    enqueue(arr) {
-        let lastNode = this.head
-        if (lastNode == null) {
-            this.head = new Node(arr)
-            return
-        }
-        while(lastNode.next != null) {
-            lastNode = lastNode.next
-        }
-        let newNode = new Node(arr)
-        lastNode.next = newNode
+  enqueue(arr) {
+    let lastNode = this.head;
+    if (lastNode == null) {
+      this.head = new Node(arr);
+      return;
     }
-    
-    dequeue() {
-        let node = this.head
-        if (node == null) return null
-        let value = node.value
-        this.head = node.next // make the head point to the next node
-        return value
+    while (lastNode.next != null) {
+      lastNode = lastNode.next;
     }
+    let newNode = new Node(arr);
+    lastNode.next = newNode;
+  }
 
-    isEmpty() {
-        if (this.head == null) return true
-    }
+  dequeue() {
+    let node = this.head;
+    if (node == null) return null;
+    let value = node.value;
+    this.head = node.next; // make the head point to the next node
+    return value;
+  }
+
+  isEmpty() {
+    if (this.head == null) return true;
+  }
 }
