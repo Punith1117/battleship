@@ -100,3 +100,10 @@ header {
     padding: 5px;
 }
 
+.won {
+    background-color: green;
+    box-shadow: 2px 5px 5px black;
+    scale: 1.2;
+    transition: all 0.6s ease-in;
+}
+
