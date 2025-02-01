@@ -58,18 +58,35 @@ header {
     border: 0px solid black;
     border-radius: 5px;
     background-color: rgb(173, 229, 255);
+
+    &:hover {
+        background-color: rgb(141, 183, 204);
+        cursor: pointer;
+    }
 }
 
 .ship {
     background-color: rgb(63, 63, 63);
+    &:hover {
+        background-color: rgb(63, 63, 63);
+        cursor: default;
+    }
 }
 
 .hit {
     background-color: green;
+    &:hover {
+        background-color: green;
+        cursor: default;
+    }
 }
 
 .miss {
     background-color: rgb(255, 83, 83);
+    &:hover {
+        background-color: rgb(255, 83, 83);
+        cursor: default;
+    }
 }
 
 .player-title, .opponent-title {
