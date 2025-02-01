@@ -1,7 +1,7 @@
 export function displayHumanBoard(player) {
     let playerDiv = document.querySelector('.player-content')
     let playerTitle = playerDiv.querySelector('.player-title')
-    playerTitle.textContent = 'Your ships'
+    playerTitle.textContent = 'Friendly Waters'
     let playerBoardDiv = playerDiv.querySelector('.player-board')
     playerBoardDiv.innerHTML = ''
     let playerBoardArr = player.board.boardArr

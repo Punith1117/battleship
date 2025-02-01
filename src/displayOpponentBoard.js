@@ -3,7 +3,7 @@ import { handlePlayerClick } from "."
 export function displayOpponentBoard(opponent) {
     let opponentDiv = document.querySelector('.opponent-content')
     let opponentTitle = opponentDiv.querySelector('.opponent-title')
-    opponentTitle.textContent = 'opponent ships'
+    opponentTitle.textContent = 'Enemy waters'
     let opponentBoardDiv = opponentDiv.querySelector('.opponent-board')
     opponentBoardDiv.innerHTML = ''
     let opponentBoardArr = opponent.board.boardArr
