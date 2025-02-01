@@ -66,10 +66,10 @@ function endGame(winner) {
         title.classList.add('won')
     } 
     let playAgainButton = dialog.querySelector('button')
+    dialog.showModal()
     playAgainButton.addEventListener('click', () => {
         location.reload()
     })
-    dialog.showModal()
 }
 
 document.addEventListener('keydown', (event) => {
