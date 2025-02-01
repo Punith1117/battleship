@@ -107,3 +107,46 @@ header {
     transition: all 0.6s ease-in;
 }
 
+dialog {
+    align-self: center;
+    justify-self: center;
+    gap: 1rem;
+    border-radius: 5px;
+    color: white;
+    border: 0px;
+    outline: none;
+    box-shadow: 1rem 1rem 2rem black;
+    font-family: monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+dialog::backdrop {
+    background: transparent;
+}
+
+dialog:has(.human-won) {/* display: flex has to be done only after dialog is displayed or else it leads to permanent display of dialog */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(48, 151, 48);
+}
+
+dialog:has(.computer-won) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 57, 57);
+}
+
+.play-again {
+    background-color: beige;
+    outline: none;
+    border-radius: 5px;
+    border: 0px;
+    &:hover {
+        cursor: pointer;
+    }
+}
