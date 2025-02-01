@@ -52,8 +52,6 @@ header {
     gap: 3px;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
-}
-.opponent-board {
     margin-bottom: 1rem;
 }
 
