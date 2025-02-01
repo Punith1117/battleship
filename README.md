@@ -2,7 +2,7 @@
 
 - This is a browser based Battleship game built using HTML, CSS and Javascript. It follows the principles of Test-Driven Development(TDD) and was created as part of The Odin Project curriculum.  
  
-- Try it out now by clicking [here]()  
+- Try it out now by clicking [here](https://punith1117.github.io/battleship/)  
 
 - Technologies used:  
   - HTML, CSS, Javascript  
